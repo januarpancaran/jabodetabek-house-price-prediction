@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediksi Harga Rumah di Jabodetabek</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+</head>
+<body>
+    <div class="landing-page">
+        <h1>Prediksi Harga Rumah Impianmu di Jabodetabek</h1>
+
+        <form action="{{url_for('predict')}}" method="post">
+            <input type="text" name="bedrooms" placeholder="Jumlah Kamar Tidur" required="required">
+            <input type="text" name="bathrooms" placeholder="Jumlah Kamar Mandi" required="required">
+            <input type="text" name="land-size" placeholder="Luas Tanah" required="required">
+            <input type="text" name="building-size" placeholder="Luas Bangunan" required="required">
+            <input type="text" name="floors" placeholder="Jumlah Lantai" required="required">
+
+            <button type="submit" class="btn">Prediksi Harga</button>
+        </form>
+
+        <p>{{prediction_text}}</p>
+    </div>
+</body>
+</html>
