@@ -1,6 +1,6 @@
 # Jabodetabek House Price Prediction
 
-Sebuah proyek untuk memprediksi harga rumah di Jabodetabek menggunakan metode Multiple Linear Regression
+Sebuah proyek mata kuliah Statistika untuk memprediksi harga rumah di Jabodetabek menggunakan metode Multiple Linear Regression
 
 ## Get Started
 
@@ -12,7 +12,7 @@ Sebuah proyek untuk memprediksi harga rumah di Jabodetabek menggunakan metode Mu
 
 `python -m venv .venv`
 
-`venv\Scripts\activate.bat`
+`.venv\Scripts\activate.bat`
 
 `pip install -r requirements.txt`
 
@@ -24,9 +24,11 @@ Sebuah proyek untuk memprediksi harga rumah di Jabodetabek menggunakan metode Mu
 
 `python3 -m venv .venv`
 
-`source venv/bin/activate`
+`source .venv/bin/activate`
 
 `pip3 install -r requirements.txt`
+
+<br>
 
 ## Run the program
 
