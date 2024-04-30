@@ -2,6 +2,8 @@
 
 Sebuah proyek mata kuliah Statistika untuk memprediksi harga rumah di Jabodetabek menggunakan metode Multiple Linear Regression
 
+<br>
+
 ## Get Started
 
 ### Windows
@@ -12,7 +14,7 @@ Sebuah proyek mata kuliah Statistika untuk memprediksi harga rumah di Jabodetabe
 
 `python -m venv .venv`
 
-`.venv\Scripts\activate.bat`
+`.venv\Scripts\activate`
 
 `pip install -r requirements.txt`
 
@@ -34,7 +36,7 @@ Sebuah proyek mata kuliah Statistika untuk memprediksi harga rumah di Jabodetabe
 
 ### Windows
 
-`.venv\Scripts\activate.bat`
+`.venv\Scripts\activate`
 
 `python app.py`
 
