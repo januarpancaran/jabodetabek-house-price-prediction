@@ -1,0 +1,382 @@
+{% extends "index.html" %} {% block title %}Statistika{% endblock %} {% block
+content %}
+<section id="predict-page" class="flex justify-center">
+  <div class="container">
+    <!-- Page Title Start -->
+    <div class="flex justify-center items-center mt-10">
+      <h1
+        class="text-slate-800 text-4xl font-bold tracking-tight lg:font-extrabold lg:text-6xl lg:leading-none dark:text-white lg:text-center xl:px-36 lg:mb-7 word-wrap"
+      >
+        Prediksi Harga
+      </h1>
+    </div>
+    <!-- Page Title End -->
+
+    <div class="mt-8">
+      <form
+        action="{{url_for('predict')}}"
+        method="post"
+        class="max-w-xs mx-auto"
+      >
+        <div class="grid gap-6 mb-6 md:grid-cols-2">
+          <!-- Jumlah Kamar Tidur Start -->
+          <div>
+            <label
+              for="bedrooms"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Jumlah Kamar Tidur:</label
+            >
+            <div class="relative flex items-center max-w-[11rem]">
+              <button
+                type="button"
+                id="decrement-button"
+                data-input-counter-decrement="bedrooms"
+                class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+              >
+                <svg
+                  class="w-3 h-3 text-gray-900 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 18 2"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 1h16"
+                  />
+                </svg>
+              </button>
+              <input
+                type="text"
+                id="bedrooms"
+                name="bedrooms"
+                data-input-counter
+                data-input-counter-min="1"
+                data-input-counter-max="10"
+                aria-describedby="helper-text-explanation"
+                class="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder=""
+                value="1"
+                required
+              />
+              <div
+                class="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 space-x-1 rtl:space-x-reverse"
+              >
+                <svg
+                  class="w-2.5 h-2.5 text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8v10a1 1 0 0 0 1 1h4v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5h4a1 1 0 0 0 1-1V8M1 10l9-9 9 9"
+                  />
+                </svg>
+                <span>Bedrooms</span>
+              </div>
+              <button
+                type="button"
+                id="increment-button"
+                data-input-counter-increment="bedrooms"
+                class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+              >
+                <svg
+                  class="w-3 h-3 text-gray-900 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 18 18"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 1v16M1 9h16"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <!-- Jumlah Kamar Tidur End  -->
+
+          <!-- Luas Tanah Start -->
+          <div>
+            <label
+              for="land-size"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Luas Tanah (m^2):</label
+            >
+            <input
+              type="text"
+              id="land-size"
+              name="land-size"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+          <!-- Luas Tanah End -->
+
+          <!-- Jumlah Kamar Mandi Start -->
+          <div>
+            <label
+              for="bathrooms"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Jumlah Kamar Mandi:</label
+            >
+            <div class="relative flex items-center max-w-[11rem]">
+              <button
+                type="button"
+                id="decrement-button"
+                data-input-counter-decrement="bathrooms"
+                class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+              >
+                <svg
+                  class="w-3 h-3 text-gray-900 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 18 2"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 1h16"
+                  />
+                </svg>
+              </button>
+              <input
+                type="text"
+                id="bathrooms"
+                name="bathrooms"
+                data-input-counter
+                data-input-counter-min="1"
+                data-input-counter-max="10"
+                aria-describedby="helper-text-explanation"
+                class="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder=""
+                value="1"
+                required
+              />
+              <div
+                class="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 space-x-1 rtl:space-x-reverse"
+              >
+                <svg
+                  class="w-2.5 h-2.5 text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8v10a1 1 0 0 0 1 1h4v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5h4a1 1 0 0 0 1-1V8M1 10l9-9 9 9"
+                  />
+                </svg>
+                <span>Bathrooms</span>
+              </div>
+              <button
+                type="button"
+                id="increment-button"
+                data-input-counter-increment="bathrooms"
+                class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+              >
+                <svg
+                  class="w-3 h-3 text-gray-900 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 18 18"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 1v16M1 9h16"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <!-- Jumlah Kamar Mandi End -->
+
+          <!-- Luas Bangunan Start -->
+          <div>
+            <label
+              for="building-size"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Luas Bangunan (m^2):</label
+            >
+            <input
+              type="text"
+              id="building-size"
+              name="building-size"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+          <!-- Luas Bangunan End -->
+
+          <!-- Jumlah Lantai Tingkat Start -->
+          <div>
+            <label
+              for="floors"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Jumlah Lantai Tingkat:</label
+            >
+            <div class="relative flex items-center max-w-[11rem]">
+              <button
+                type="button"
+                id="decrement-button"
+                data-input-counter-decrement="floors"
+                class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+              >
+                <svg
+                  class="w-3 h-3 text-gray-900 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 18 2"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M1 1h16"
+                  />
+                </svg>
+              </button>
+              <input
+                type="text"
+                id="floors"
+                name="floors"
+                data-input-counter
+                data-input-counter-min="1"
+                data-input-counter-max="10"
+                aria-describedby="helper-text-explanation"
+                class="bg-gray-50 border-x-0 border-gray-300 h-11 font-medium text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full pb-6 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder=""
+                value="1"
+                required
+              />
+              <div
+                class="absolute bottom-1 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex items-center text-xs text-gray-400 space-x-1 rtl:space-x-reverse"
+              >
+                <svg
+                  class="w-2.5 h-2.5 text-gray-400"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8v10a1 1 0 0 0 1 1h4v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5h4a1 1 0 0 0 1-1V8M1 10l9-9 9 9"
+                  />
+                </svg>
+                <span>Floors</span>
+              </div>
+              <button
+                type="button"
+                id="increment-button"
+                data-input-counter-increment="floors"
+                class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
+              >
+                <svg
+                  class="w-3 h-3 text-gray-900 dark:text-white"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 18 18"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 1v16M1 9h16"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <!-- Jumlah Lantai End -->
+
+          <!-- Umur Bangunan Start -->
+          <div>
+            <label
+              for="building-age"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Umur Bangunan:</label
+            >
+            <input
+              type="text"
+              id="building-age"
+              name="building-age"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+          <!-- Umur Bangunan End -->
+        </div>
+
+        <!-- Submit Button Start -->
+        <div class="flex justify-center items-center">
+          <button
+            type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Submit
+          </button>
+        </div>
+        <!-- Submit Button End -->
+      </form>
+
+      <!-- Result Text Start -->
+      <div
+        class="flex justify-center items-center mt-10 flex-col text-center"
+        {%
+        if
+        prediction_text
+        %}style="display: block;"
+        {%
+        else
+        %}style="display: none;"
+        {%
+        endif
+        %}
+      >
+        <div class="mb-4">
+          <h3 class="text-3xl font-bold dark:text-white">
+            Harga Rumah Impianmu Adalah:
+          </h3>
+        </div>
+        <!-- Result Text End -->
+
+        <!-- Result Number Start -->
+        <div class="text-center">
+          <h2 class="text-4xl font-bold dark:text-white">
+            {{prediction_text}}
+          </h2>
+        </div>
+      </div>
+      <!-- Result Number End -->
+    </div>
+  </div>
+</section>
+{% endblock %}
