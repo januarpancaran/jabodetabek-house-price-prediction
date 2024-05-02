@@ -1,9 +1,44 @@
 {% extends "index.html" %} {% block title %}Statistika{% endblock %} {% block
-content %} 
-<div> 
-    <img src="data:image.png;base64, {{df_histogram}}" alt="Histogram">
+content %}
+<div
+  class="max-w-xl mx-auto w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 flex justify-center items-center mt-8"
+>
+  <div class="flex justify-between">
+    <div>
+      <h1
+        class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2"
+        style="text-align: center"
+      >
+        Histogram Umur Bangunan dan Harga Bangunan
+      </h1>
+      <div>
+        <img
+          src="data:image.png;base64, {{df_histogram}}"
+          alt="Histogram Umur Bangunan dan Harga Bangunan"
+        />
+      </div>
+    </div>
+  </div>
 </div>
-<div>
-    <img src="data:image.png;base64,{{df_scatter_plot}}" alt ="Scatter Plot Hubungan beberapa Variabel"/>
+
+<div
+  class="max-w-xl mx-auto bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 flex justify-center items-center mt-8"
+>
+  <div class="flex justify-between">
+    <div>
+      <h1
+        class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2"
+        style="text-align: center"
+      >
+        Scatter Plot Semua Kolom dengan Harga Bangunan
+      </h1>
+      <div>
+        <img
+          src="data:image.png;base64,{{df_scatter_plot}}"
+          alt="Scatter Plot Hubungan beberapa Variabel"
+        />
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
