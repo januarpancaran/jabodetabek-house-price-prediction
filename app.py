@@ -6,6 +6,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
+import seaborn as sns
 
 app = Flask(__name__)
 
@@ -25,6 +26,19 @@ def histogram(df):
     plt.savefig(img, format='png')
     img.seek(0)
     img_base64 = base64.b64encode(img.getvalue()).decode()
+    plt.close()
+
+    return img_base64
+
+def scatter_plot(df):
+    plt.figure(figsize=(10,8))
+    sns.pairplot(data = df, x_vars=['bedrooms', 'bathrooms', 'land_size_m2', 'building_size_m2', 'floors', 'building_age'], y_vars=['price_in_rp'], size = 5, aspect=0.75)
+    plt.show()
+
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    img_base64= base64.b64encode(img.getvalue()).decode()
     plt.close()
 
     return img_base64
@@ -56,8 +70,9 @@ def predict():
 @app.route('/chart')
 def chart():
     df_histogram = histogram(df)
-
-    return render_template('pages/chart.html', df_histogram=df_histogram)
+    df_scatter_plot = scatter_plot(df)
+    
+    return render_template('pages/chart.html', df_histogram=df_histogram, df_scatter_plot=df_scatter_plot)
 
 if __name__ == "__main__":
     app.run(debug=True)
