@@ -12,7 +12,7 @@ Sebuah proyek mata kuliah Statistika untuk memprediksi harga rumah di Jabodetabe
 
 `cd jabodetabek-house-price-prediction`
 
-`python -m venv .venv`
+`py -m venv .venv`
 
 `.venv\Scripts\activate`
 
@@ -38,9 +38,9 @@ Sebuah proyek mata kuliah Statistika untuk memprediksi harga rumah di Jabodetabe
 
 `.venv\Scripts\activate`
 
-`python app.py`
+`py app.py`
 
-## Mac & Linux
+### Mac & Linux
 
 `source .venv/bin/activate`
 
