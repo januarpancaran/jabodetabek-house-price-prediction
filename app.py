@@ -2,6 +2,7 @@ import numpy as np
 from flask import Flask, request, render_template
 import pickle
 from train.train import df
+import matplotlib
 import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
@@ -9,6 +10,8 @@ import base64
 app = Flask(__name__)
 
 model = pickle.load(open('train/model.pkl', 'rb'))
+
+matplotlib.use('Agg')
 
 def histogram(df):
     data = df.groupby('price_in_rp')['building_age'].sum()
