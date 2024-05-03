@@ -415,18 +415,18 @@ content %}
 </section>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", () => {
     const form = document.querySelector("form");
-    const loginButton = document.getElementById("submit-button");
+    const submitButton = document.getElementById("submit-button");
     const loadingSpinner = document.getElementById("loading-spinner");
 
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      loginButton.style.display = "none"; // Sembunyikan tombol login
+      submitButton.style.display = "none";
       loadingSpinner.style.opacity = "1"; // Tampilkan loading spinner
 
-      setTimeout(function () {
+      setTimeout(() => {
         form.submit(); // Submit formulir setelah 2 detik
       }, 2000);
     });
