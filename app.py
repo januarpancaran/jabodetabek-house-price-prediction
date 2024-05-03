@@ -73,8 +73,30 @@ def scatter_plot(df):
 
     return img_figure_base64
 
+def pie_chart(df):
+    df['building_age'] = df['building_age'].apply(lambda x: 10 if x > 10 else x)
+    category_counts = (df['building_age']).value_counts()
+    
+    # Plot pie chart
+    plt.figure(figsize=(8, 8))
+    plt.pie(category_counts, labels=category_counts.index, autopct='%1.1f%%', startangle=140)
+    plt.axis('equal')  # Membuat pie chart menjadi lingkaran
+    plt.title('Umur Bangunan')
+    
+    # Simpan gambar ke dalam buffer BytesIO
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    
+    # Ubah gambar menjadi base64 untuk disisipkan di HTML
+    img_base64 = base64.b64encode(img.getvalue()).decode()
+    plt.close()
+    
+    return img_base64
+
 
 @app.route('/')
+
 def home():
     return render_template('pages/hero.html')
 
@@ -101,8 +123,9 @@ def predict():
 def chart():
     df_histogram = histogram(df)
     df_scatter_plot = scatter_plot(df)
+    df_pie_chart = pie_chart(df)
     
-    return render_template('pages/chart.html', df_histogram=df_histogram, df_scatter_plot=df_scatter_plot)
+    return render_template('pages/chart.html', df_histogram=df_histogram, df_scatter_plot=df_scatter_plot, df_pie_chart=df_pie_chart)
 
 if __name__ == "__main__":
     app.run(debug=True)
