@@ -1,11 +1,13 @@
 {% extends "index.html" %} {% block title %}Statistika{% endblock %} {% block
 content %}
 <section id="predict-page" class="flex justify-center">
-  <div class="container">
+  <div
+    class="container max-w-xl mx-auto w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 mt-8"
+  >
     <!-- Page Title Start -->
-    <div class="flex justify-center items-center mt-10">
+    <div class="flex justify-center items-center mt-6">
       <h1
-        class="text-slate-800 text-4xl font-bold tracking-tight lg:font-extrabold lg:text-6xl lg:leading-none dark:text-white lg:text-center xl:px-36 lg:mb-7 word-wrap"
+        class="text-slate-800 text-4xl font-bold tracking-tight lg:font-extrabold lg:text-4xl lg:leading-none dark:text-white lg:text-center xl:px-36 lg:mb-7 word-wrap"
       >
         Prediksi Harga
       </h1>
@@ -113,7 +115,7 @@ content %}
             <label
               for="land-size"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Luas Tanah (m^2):</label
+              >Luas Tanah (m&sup2;):</label
             >
             <input
               type="text"
@@ -219,7 +221,7 @@ content %}
             <label
               for="building-size"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Luas Bangunan (m^2):</label
+              >Luas Bangunan (m&sup2;):</label
             >
             <input
               type="text"
@@ -339,7 +341,7 @@ content %}
         </div>
 
         <!-- Submit Button Start -->
-        <div class="flex justify-center items-center">
+        <div class="flex justify-center items-center mb-6 pb-6">
           <button
             type="submit"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
