@@ -78,7 +78,7 @@ def pie_chart(df):
     category_counts = (df['building_age']).value_counts()
     
     # Plot pie chart
-    plt.figure(figsize=(8, 8))
+    plt.figure(figsize=(8, 10))
     plt.pie(category_counts, labels=category_counts.index, autopct='%1.1f%%', startangle=140)
     plt.axis('equal')  # Membuat pie chart menjadi lingkaran
     plt.title('Umur Bangunan')
@@ -96,7 +96,6 @@ def pie_chart(df):
 
 
 @app.route('/')
-
 def home():
     return render_template('pages/hero.html')
 
@@ -119,7 +118,7 @@ def predict():
     else:
         return render_template('pages/predict.html')
     
-@app.route('/chart')
+@app.route('/chart', methods=['GET'])
 def chart():
     df_histogram = histogram(df)
     df_scatter_plot = scatter_plot(df)
