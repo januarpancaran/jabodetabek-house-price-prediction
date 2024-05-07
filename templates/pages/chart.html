@@ -66,4 +66,25 @@ content %}
     </div>
   </div>
 </div>
+
+<div
+  class="max-w-xl mx-auto w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6 flex justify-center items-center mt-8"
+>
+  <div class="flex justify-between">
+    <div>
+      <h1
+        class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2"
+        style="text-align: center"
+      >
+        Heatmap Korelasi Semua Kolom
+      </h1>
+      <div>
+        <img
+          src="data:image.png;base64, {{df_heatmap}}"
+          alt="Heatmap Korelasi Semua Kolom"
+        />
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
