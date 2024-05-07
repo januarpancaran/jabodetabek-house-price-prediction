@@ -1,24 +1,23 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+import pickle
 
 file_path = 'dataset/jabodetabek_house_price.csv'
 df = pd.read_csv(file_path, usecols=['price_in_rp', 'bedrooms', 'bathrooms', 'land_size_m2', 'building_size_m2', 'floors', 'building_age'])
 
-df = df.dropna()
+df.dropna(inplace=True)
 
-x_df = df.drop(columns=['price_in_rp'], axis=1)
-y_df = df['price_in_rp']
+x = df.drop(['price_in_rp'], axis=1)
+y = df['price_in_rp']
 
-x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.25, random_state=42)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=1)
+
+train_df = x_train.join(y_train)
 
 model = LinearRegression()
 
+x_train, y_train = train_df.drop(['price_in_rp'], axis=1), train_df['price_in_rp']
 model.fit(x_train, y_train)
 
-prediction_test = model.predict(x_test)
-
-import pickle
 pickle.dump(model, open('train/model.pkl', 'wb'))
-
-model = pickle.load(open('train/model.pkl', 'rb'))
