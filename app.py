@@ -94,6 +94,19 @@ def pie_chart(df):
     
     return img_base64
 
+def heatmap(df):
+    plt.figure(figsize=(15, 10))
+    sns.heatmap(df.corr(), annot=True, cmap='YlGnBu')
+    plt.title('Heatmap Korelasi semua kolom')
+
+    img = BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    img_base64 = base64.b64encode(img.getvalue()).decode()
+    plt.close()
+
+    return img_base64
+
 
 @app.route('/')
 def home():
@@ -123,8 +136,9 @@ def chart():
     df_histogram = histogram(df)
     df_scatter_plot = scatter_plot(df)
     df_pie_chart = pie_chart(df)
+    df_heatmap = heatmap(df)
     
-    return render_template('pages/chart.html', df_histogram=df_histogram, df_scatter_plot=df_scatter_plot, df_pie_chart=df_pie_chart)
+    return render_template('pages/chart.html', df_histogram=df_histogram, df_scatter_plot=df_scatter_plot, df_pie_chart=df_pie_chart, df_heatmap=df_heatmap)
 
 if __name__ == "__main__":
     app.run(debug=True)
