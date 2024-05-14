@@ -131,7 +131,7 @@ def predict():
     else:
         return render_template('pages/predict.html')
     
-@app.route('/chart', methods=['GET'])
+@app.route('/chart')
 def chart():
     df_histogram = histogram(df)
     df_scatter_plot = scatter_plot(df)
@@ -139,6 +139,10 @@ def chart():
     df_heatmap = heatmap(df)
     
     return render_template('pages/chart.html', df_histogram=df_histogram, df_scatter_plot=df_scatter_plot, df_pie_chart=df_pie_chart, df_heatmap=df_heatmap)
+
+@app.route('/about')
+def about():
+    return render_template('pages/about.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
