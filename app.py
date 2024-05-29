@@ -121,11 +121,20 @@ def predict():
         scaled_prediction = prediction[0]
 
         if scaled_prediction >= 1e12:
-            output = "Rp{:.2f} Triliun".format(scaled_prediction / 1e12)
+            if scaled_prediction < 0:
+                output = "Rp{:.2f} Triliun".format(scaled_prediction / 1e12 * (-1))
+            else:
+                output = "Rp{:.2f} Triliun".format(scaled_prediction / 1e12)
         elif scaled_prediction >= 1e9:
-            output = "Rp{:.2f} Miliar".format(scaled_prediction / 1e9)
+            if scaled_prediction < 0:
+                output = "Rp{:.2f} Miliar".format(scaled_prediction / 1e9 * (-1))
+            else:
+                output = "Rp{:.2f} Miliar".format(scaled_prediction / 1e9)
         else:
-            output = "Rp{:.2f} Juta".format(scaled_prediction / 1e6)
+            if scaled_prediction < 0:
+                output = "Rp{:.2f} Juta".format(scaled_prediction / 1e6 * (-1))
+            else:
+                output = "Rp{:.2f} Juta".format(scaled_prediction / 1e6)
 
         return render_template('pages/predict.html', prediction_text=output)
     else:
