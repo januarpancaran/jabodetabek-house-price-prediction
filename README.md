@@ -1,47 +1,37 @@
 # Jabodetabek House Price Prediction
 
-Sebuah proyek mata kuliah Statistika untuk memprediksi harga rumah di Jabodetabek menggunakan metode Multiple Linear Regression
+A machine learning project that predicts the price of a house based on the features of the house.
 
-<br>
+![megaphone](screenshot.png)
 
-## Get Started
+## Dataset
 
-### Windows
+The dataset used in this project is collected from Kaggle. You can download the dataset [here](https://www.kaggle.com/datasets/nafisbarizki/daftar-harga-rumah-jabodetabek)
 
-`git clone https://github.com/januarpancaran/jabodetabek-house-price-prediction.git`
+## Main Features
 
-`cd jabodetabek-house-price-prediction`
+- Predict the price of a house based on the features of the house.
+- Using linear regression to predict the price of a house.
+- Machine learning model performance evaluation chart.
 
-`py -m venv .venv`
+## Tech Stack
 
-`.venv\Scripts\activate`
+- Python
+- Pandas
+- Numpy
+- Matplotlib
+- Seaborn
+- Scikit-learn
+- Flask
+- Tailwind CSS
+- Flowbite
 
-`pip install -r requirements.txt`
+## How to run the project
 
-### Mac & Linux
-
-`git clone https://github.com/januarpancaran/jabodetabek-house-price-prediction.git`
-
-`cd jabodetabek-house-price-prediction`
-
-`python3 -m venv .venv`
-
-`source .venv/bin/activate`
-
-`pip3 install -r requirements.txt`
-
-<br>
-
-## Run the program
-
-### Windows
-
-`.venv\Scripts\activate`
-
-`py app.py`
-
-### Mac & Linux
-
-`source .venv/bin/activate`
-
-`python3 app.py`
+```bash
+git clone https://github.com/januarpancaran/jabodetabek-house-price-prediction.git
+cd jabodetabek-house-price-prediction
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
